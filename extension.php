@@ -9,7 +9,9 @@ final class ShareToLinkwardenExtension extends Minz_Extension {
         $this->registerViews();
 
         $conf = FreshRSS_Context::userConf();
-        if (!empty($conf->linkwarden_url) && !empty($conf->linkwarden_token)) {
+        $linkwarden_url = $conf->linkwarden_url;
+        $linkwarden_token = $conf->linkwarden_token;
+        if (!empty($linkwarden_url) && !empty($linkwarden_token)) {
             FreshRSS_Share::register([
                 'type' => 'linkwarden',
                 'url' => Minz_Url::display(['c' => 'shareToLinkwarden', 'a' => 'share']) . '&id=~ID~',
