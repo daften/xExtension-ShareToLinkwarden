@@ -1,0 +1,32 @@
+<?php
+    declare(strict_types=1);
+    /** @var \ShareToLinkwarden\Models\View $this */
+?>
+<div class="post">
+    <h1><?= _t('share_to_linkwarden.share.title') ?></h1>
+
+    <p>
+        <?= _t('share_to_linkwarden.share.intro', '<strong>' . htmlspecialchars($this->entry->title(), ENT_NOQUOTES, 'UTF-8') . '</strong>'); ?>
+    </p>
+
+    <form action="<?= _url('shareToLinkwarden', 'share', 'id', $this->entry->id()); ?>" method="post">
+        <input type="hidden" name="_csrf" value="<?= FreshRSS_Auth::csrfToken() ?>" />
+
+        <div class="form-group">
+            <label class="group-name" for="linkwarden_title"><?= _t('share_to_linkwarden.share.form.title') ?></label>
+            <div class="group-controls">
+                <input type="text" name="linkwarden_title" id="linkwarden_title" value="<?= htmlspecialchars($this->entry->title(), ENT_NOQUOTES, 'UTF-8') ?>" disabled />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="group-name" for="linkwarden_url"><?= _t('share_to_linkwarden.share.form.url') ?></label>
+            <div class="group-controls">
+                <input type="text" name="linkwarden_url" id="linkwarden_url" value="<?= htmlspecialchars($this->entry->link(), ENT_NOQUOTES, 'UTF-8') ?>" disabled />
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-important"><?= _t('share_to_linkwarden.share.form.send') ?></button>
+        <a href="<?= _url('index', 'index') ?>" class="btn"><?= _t('share_to_linkwarden.share.form.cancel') ?></a>
+    </form>
+</div>

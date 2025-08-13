@@ -1,0 +1,26 @@
+<?php
+    declare(strict_types=1);
+    /** @var ShareToLinkwardenExtension $this */
+?>
+<form action="<?= _url('extension', 'configure', 'e', urlencode($this->getName())); ?>" method="post" data-auto-leave-validation="1">
+    <input type="hidden" name="_csrf" value="<?= FreshRSS_Auth::csrfToken() ?>" />
+    <div class="form-group">
+        <label class="group-name" for="linkwarden_url"><?= _t('share_to_linkwarden.config.linkwarden_url') ?></label>
+        <div class="group-controls">
+            <input type="url" name="linkwarden_url" id="linkwarden_url" value="<?= FreshRSS_Context::$user_conf->linkwarden_url ?? '' ?>" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="group-name" for="linkwarden_token"><?= _t('share_to_linkwarden.config.linkwarden_token') ?></label>
+        <div class="group-controls">
+            <input type="password" name="linkwarden_token" id="linkwarden_token" value="<?= FreshRSS_Context::$user_conf->linkwarden_token ?? '' ?>" />
+        </div>
+    </div>
+
+    <div class="form-group form-actions">
+        <div class="group-controls">
+            <button type="submit" class="btn btn-important"><?= _t('gen.action.submit') ?></button>
+            <button type="reset" class="btn"><?= _t('gen.action.cancel') ?></button>
+        </div>
+    </div>
+</form>

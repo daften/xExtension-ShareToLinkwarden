@@ -1,0 +1,8 @@
+{
+    "name": "Share to Linkwarden",
+    "author": "Dieter Blomme",
+    "description": "Adds a button to share articles to Linkwarden.",
+    "version": "0.1.0",
+    "entrypoint": "ShareToLinkwarden",
+    "type": "user"
+}
